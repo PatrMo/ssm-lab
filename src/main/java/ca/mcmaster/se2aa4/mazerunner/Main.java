@@ -1,7 +1,6 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 
 import org.apache.logging.log4j.LogManager;
@@ -15,7 +14,6 @@ public class Main {
     public static void main(String[] args) {
         logger.info("** Starting Maze Runner");
 
-        // Define the command line options
         Options options = new Options();
         options.addOption("i", "input", true, "Input file containing the maze");
 
@@ -23,7 +21,6 @@ public class Main {
         CommandLine cmd = null;
 
         try {
-            // Parse the command-line arguments
             cmd = parser.parse(options, args);
 
             // Get the input file path from the command-line argument
