@@ -16,3 +16,6 @@ target
 
 # MacOS X bs
 .DS_Store
+
+# UML drawing
+UML_design.drawio.svg
