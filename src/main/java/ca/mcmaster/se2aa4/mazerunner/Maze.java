@@ -22,9 +22,9 @@ public class Maze {
             for (int j = 0; j < width; j++) {
                 if (grid[i][j] == ' ' && (i == 0 || i == height - 1 || j == 0 || j == width - 1)) {
                     if (entry == null) {
-                        entry = new Position(i, j, Direction.EAST);  // Assuming the first entry point is on the East
+                        entry = new Position(i, j, Direction.EAST, this);  // Assuming the first entry point is on the East
                     } else {
-                        exit = new Position(i, j, Direction.WEST);  // Assuming the second entry point is the exit
+                        exit = new Position(i, j, Direction.WEST, this); // Assuming the second entry point is the exit
                     }
                 }
             }

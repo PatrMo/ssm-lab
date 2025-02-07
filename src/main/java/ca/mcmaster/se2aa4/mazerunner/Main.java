@@ -38,7 +38,7 @@ public class Main {
                 logger.info(isValid ? "Path is VALID." : "Path is INVALID.");
             } else {
                 // Compute a path using the right-hand rule algorithm
-                PathFinder pathFinder = new RightHandRulePathFinder(explorer);
+                PathFinder pathFinder = new RightHandRule(explorer);
                 String computedPath = pathFinder.findPath();
                 logger.info("Computed Path: " + computedPath);
             }

@@ -1,34 +1,15 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
-public class Explorer {
-    private Position position;
-    private Maze maze;
+public class RightHandRule implements PathFinder {
+    private Explorer explorer;
 
-    public Explorer(Maze maze) {
-        this.maze = maze;
-        Position entry = maze.getEntry();
-        this.position = new Position(entry.getX(), entry.getY(), entry.getDirection(), maze);
+    public RightHandRule(Explorer explorer) {
+        this.explorer = explorer;
     }
 
-    public Position getPosition() {
-        return position;
-    }
-
-    public boolean canMoveForward() {
-        return position.canMoveForward();
-    }
-
-    public void moveForward() {
-        if (canMoveForward()) {
-            position.moveForward();
-        }
-    }
-
-    public void turnRight() {
-        position.turnRight();
-    }
-
-    public void turnLeft() {
-        position.turnLeft();
+    @Override
+    public String findPath() {
+        // Implement path-finding logic
+        return "";
     }
 }
