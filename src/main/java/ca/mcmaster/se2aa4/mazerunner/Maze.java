@@ -13,11 +13,14 @@ public class Maze {
     public Maze(String filename) throws IOException {
         List<String> lines = Files.readAllLines(Paths.get(filename));
         height = lines.size();
-        width = lines.get(0).length();
+        width = lines.stream().mapToInt(String::length).max().orElse(0);
         grid = new char[height][width];
 
         for (int i = 0; i < height; i++) {
-            grid[i] = lines.get(i).toCharArray();
+            String line = lines.get(i);
+            for (int j = 0; j < width; j++) {
+                grid[i][j] = (j < line.length()) ? line.charAt(j) : ' ';
+            }
         }
 
         findEntryAndExit();
