@@ -14,15 +14,15 @@ public class RightHandRule implements PathFinder {
         while (!hasReachedExit()) {
             if (canTurnRight()) {
                 explorer.turnRight();
-                path.append("R ");
+                path.append("R");
                 explorer.moveForward();
-                path.append("F ");
+                path.append("F");
             } else if (canMoveForward()) {
                 explorer.moveForward();
-                path.append("F ");
+                path.append("F");
             } else {
                 explorer.turnLeft();
-                path.append("L ");
+                path.append("L");
             }
         }
         return factorizePath(path.toString().trim());

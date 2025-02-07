@@ -11,6 +11,7 @@ public class PathValidator {
         String expandedPath = expandFactorizedPath(path); // Expand 
         
         for (char command : expandedPath.toCharArray()) {
+            System.out.println(command);
             switch (command) {
                 case 'F':
                     if (!explorer.canMoveForward()) {
@@ -30,7 +31,14 @@ public class PathValidator {
         }
 
         // Check if we reached the exit
-        return explorer.getPosition().equals(explorer.getPosition().getMaze().getExit());
+
+        if (explorer.getPosition().getX()==explorer.getPosition().getMaze().getExit().getX() & explorer.getPosition().getY()==explorer.getPosition().getMaze().getExit().getY()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+        //return explorer.getPosition().equals(explorer.getPosition().getMaze().getExit()); -- doesn't work due to direction maybe refactor in future
     }
 
 
