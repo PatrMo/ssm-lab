@@ -1,47 +1,34 @@
 package ca.mcmaster.se2aa4.mazerunner;
 
-public class RightHandRulePathFinder implements PathFinder {
-    private Explorer explorer;
-    
-    public RightHandRulePathFinder(Explorer explorer) {
-        this.explorer = explorer;
+public class Explorer {
+    private Position position;
+    private Maze maze;
+
+    public Explorer(Maze maze) {
+        this.maze = maze;
+        Position entry = maze.getEntry();
+        this.position = new Position(entry.getX(), entry.getY(), entry.getDirection(), maze);
     }
 
-    @Override
-    public String findPath() {
-        StringBuilder path = new StringBuilder();
-
-        while (!explorer.getPosition().equals(explorer.getPosition().getMaze().getExit())) {
-            explorer.turnRight();
-            if (explorer.canMoveForward()) {
-                explorer.moveForward();
-                path.append("F");
-            } else {
-                explorer.turnLeft();
-                if (explorer.canMoveForward()) {
-                    explorer.moveForward();
-                    path.append("F");
-                } else {
-                    explorer.turnLeft();
-                    path.append("L");
-                }
-            }
-        }
-        return factorizePath(path.toString());
+    public Position getPosition() {
+        return position;
     }
 
-    private String factorizePath(String path) {
-        StringBuilder result = new StringBuilder();
-        int count = 1;
-        for (int i = 1; i < path.length(); i++) {
-            if (path.charAt(i) == path.charAt(i - 1)) {
-                count++;
-            } else {
-                result.append(count > 1 ? count : "").append(path.charAt(i - 1));
-                count = 1;
-            }
+    public boolean canMoveForward() {
+        return position.canMoveForward();
+    }
+
+    public void moveForward() {
+        if (canMoveForward()) {
+            position.moveForward();
         }
-        result.append(count > 1 ? count : "").append(path.charAt(path.length() - 1));
-        return result.toString();
+    }
+
+    public void turnRight() {
+        position.turnRight();
+    }
+
+    public void turnLeft() {
+        position.turnLeft();
     }
 }
