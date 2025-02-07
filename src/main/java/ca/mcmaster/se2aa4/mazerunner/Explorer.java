@@ -31,4 +31,8 @@ public class Explorer {
     public void turnLeft() {
         position.turnLeft();
     }
+
+    public Maze getMaze() {
+        return this.maze;
+    }
 }
