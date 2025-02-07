@@ -7,14 +7,8 @@ public class PathValidator {
         this.explorer = explorer;
     }
 
-    /**
-     * Validates if a given path correctly leads from the entry to the exit.
-     * 
-     * @param path The input path as a string (e.g., "6F L 2F R 3F L F")
-     * @return True if the path is valid, False otherwise
-     */
     public boolean isValidPath(String path) {
-        String expandedPath = expandFactorizedPath(path); // Expand "6F" → "FFFFFF"
+        String expandedPath = expandFactorizedPath(path); // Expand 
         
         for (char command : expandedPath.toCharArray()) {
             switch (command) {
@@ -39,16 +33,16 @@ public class PathValidator {
         return explorer.getPosition().equals(explorer.getPosition().getMaze().getExit());
     }
 
-    /**
-     * Expands factorized path notation (e.g., "3F L 2F" → "FFF L FF")
-     */
+
+    // Expands factorized path notation
+
     private String expandFactorizedPath(String factorizedPath) {
         StringBuilder expanded = new StringBuilder();
         StringBuilder numberBuffer = new StringBuilder();
 
         for (char c : factorizedPath.toCharArray()) {
             if (Character.isDigit(c)) {
-                numberBuffer.append(c); // Build the number (e.g., "6")
+                numberBuffer.append(c); // Build the number
             } else {
                 int repeat = numberBuffer.length() > 0 ? Integer.parseInt(numberBuffer.toString()) : 1;
                 expanded.append(String.valueOf(c).repeat(repeat));
