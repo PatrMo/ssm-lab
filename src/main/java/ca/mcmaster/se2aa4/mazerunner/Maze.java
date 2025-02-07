@@ -18,16 +18,22 @@ public class Maze {
 
         for (int i = 0; i < height; i++) {
             grid[i] = lines.get(i).toCharArray();
-            // Find entry and exit points (assuming they're on the borders)
-            for (int j = 0; j < width; j++) {
-                if (grid[i][j] == ' ' && (i == 0 || i == height - 1 || j == 0 || j == width - 1)) {
-                    if (entry == null) {
-                        entry = new Position(i, j, Direction.EAST, this);  // Assuming the first entry point is on the East
-                    } else {
-                        exit = new Position(i, j, Direction.WEST, this); // Assuming the second entry point is the exit
-                    }
-                }
+        }
+
+        findEntryAndExit();
+    }
+
+    private void findEntryAndExit() {
+        for (int i = 0; i < height; i++) {
+            if (grid[i][0] == ' ') {
+                entry = new Position(i, 0, Direction.EAST, this);
+            } else if (grid[i][width - 1] == ' ') {
+                exit = new Position(i, width - 1, Direction.WEST, this);
             }
+        }
+
+        if (entry == null || exit == null) {
+            throw new IllegalArgumentException("Invalid maze: Entry and/or exit not found on East/West borders.");
         }
     }
 
@@ -35,10 +41,11 @@ public class Maze {
         return x >= 0 && x < height && y >= 0 && y < width && grid[x][y] == ' ';
     }
 
-    //getters
+    // Getters
     public Position getEntry() {
         return entry;
     }
+
     public Position getExit() {
         return exit;
     }
