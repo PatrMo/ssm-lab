@@ -24,16 +24,18 @@ public class Maze {
     }
 
     private void findEntryAndExit() {
+        // Look for entry and exit in the left and right columns only
         for (int i = 0; i < height; i++) {
-            if (grid[i][0] == ' ') {
+            if (entry == null && grid[i][0] == ' ') {
                 entry = new Position(i, 0, Direction.EAST, this);
-            } else if (grid[i][width - 1] == ' ') {
+            } 
+            if (exit == null && grid[i][width - 1] == ' ') {
                 exit = new Position(i, width - 1, Direction.WEST, this);
             }
         }
 
         if (entry == null || exit == null) {
-            throw new IllegalArgumentException("Invalid maze: Entry and/or exit not found on East/West borders.");
+            throw new IllegalArgumentException("Invalid maze: Entry and/or exit not found.");
         }
     }
 
