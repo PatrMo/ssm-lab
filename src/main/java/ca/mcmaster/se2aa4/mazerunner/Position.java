@@ -39,7 +39,7 @@ public class Position {
             case WEST: y--; break;
         }
     }
-    //setters
+
     public void turnRight() {
         direction = direction.turnRight();
     }
