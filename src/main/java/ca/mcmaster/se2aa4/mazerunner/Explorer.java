@@ -32,7 +32,4 @@ public class Explorer {
         position.turnLeft();
     }
 
-    public Maze getMaze() {
-        return this.maze;
-    }
 }

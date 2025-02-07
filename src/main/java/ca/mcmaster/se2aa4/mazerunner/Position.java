@@ -12,10 +12,15 @@ public class Position {
         this.maze = maze;
     }
 
+    // getters
     public int getX() { return x; }
     public int getY() { return y; }
     public Direction getDirection() { return direction; }
+    public Maze getMaze() {
+        return this.maze;
+    }
 
+    // setter
     public void setDirection(Direction direction) {
         this.direction = direction;
     }
@@ -47,4 +52,5 @@ public class Position {
     public void turnLeft() {
         direction = direction.turnLeft();
     }
+
 }
