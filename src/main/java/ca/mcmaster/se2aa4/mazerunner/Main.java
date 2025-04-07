@@ -27,21 +27,10 @@ public class Main {
                 return;
             }
 
-            logger.info("Reading the maze from file: " + mazeFile);
             Maze maze = new Maze(mazeFile);
-            Explorer explorer = new Explorer(maze);
+            MazeRunnerFactory factory = (inputPath != null) ? new PathValidationFactory(inputPath) : new PathFindingFactory();
 
-            if (inputPath != null) {
-                // Validate path using the new PathValidator class
-                PathValidator validator = new PathValidator(explorer);
-                boolean isValid = validator.isValidPath(inputPath);
-                logger.info(isValid ? "Path is VALID." : "Path is INVALID.");
-            } else {
-                // Compute a path using the right-hand rule algorithm
-                PathFinder pathFinder = new RightHandRule(explorer);
-                String computedPath = pathFinder.findPath();
-                logger.info("Computed Path: " + computedPath);
-            }
+            factory.run(maze);
         } catch (Exception e) {
             logger.error("An error occurred while processing the maze.", e);
         }

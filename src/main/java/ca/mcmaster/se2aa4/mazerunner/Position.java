@@ -46,11 +46,21 @@ public class Position {
     }
 
     public void turnRight() {
-        direction = direction.turnRight();
+        switch (direction) {
+            case NORTH: direction = Direction.EAST; break;
+            case EAST: direction = Direction.SOUTH; break;
+            case SOUTH: direction = Direction.WEST; break;
+            case WEST: direction = Direction.NORTH; break;
+        }
     }
 
     public void turnLeft() {
-        direction = direction.turnLeft();
+        switch (direction) {
+            case NORTH: direction = Direction.WEST; break;
+            case EAST: direction = Direction.NORTH; break;
+            case SOUTH: direction = Direction.EAST; break;
+            case WEST: direction = Direction.SOUTH; break;
+        }
     }
 
 }

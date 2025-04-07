@@ -11,17 +11,20 @@ public class RightHandRule implements PathFinder {
 
     @Override
     public String findPath() {
+        Command turnRight = new TurnRightCommand(explorer);
+        Command moveForward = new MoveForwardCommand(explorer);
+        Command turnLeft = new TurnLeftCommand(explorer);
         while (!hasReachedExit()) {
             if (canTurnRight()) {
-                explorer.turnRight();
+                turnRight.execute();
                 path.append("R");
-                explorer.moveForward();
+                moveForward.execute();
                 path.append("F");
             } else if (canMoveForward()) {
-                explorer.moveForward();
+                moveForward.execute();
                 path.append("F");
             } else {
-                explorer.turnLeft();
+                turnLeft.execute();
                 path.append("L");
             }
         }

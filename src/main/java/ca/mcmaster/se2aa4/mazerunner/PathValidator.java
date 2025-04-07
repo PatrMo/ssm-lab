@@ -12,22 +12,22 @@ public class PathValidator {
         
         for (char command : expandedPath.toCharArray()) {
             System.out.println(command);
+            Command cmd;
             switch (command) {
                 case 'F':
-                    if (!explorer.canMoveForward()) {
-                        return false;  // Invalid move (wall or boundary)
-                    }
-                    explorer.moveForward();
+                    if (!explorer.canMoveForward()) return false;
+                    cmd = new MoveForwardCommand(explorer);
                     break;
                 case 'L':
-                    explorer.turnLeft();
+                    cmd = new TurnLeftCommand(explorer);
                     break;
                 case 'R':
-                    explorer.turnRight();
+                    cmd = new TurnRightCommand(explorer);
                     break;
                 default:
-                    return false;  // Invalid character in path
+                    return false;
             }
+            cmd.execute();
         }
 
         // Check if we reached the exit
