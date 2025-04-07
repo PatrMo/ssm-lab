@@ -14,6 +14,6 @@ public class PathValidationFactory implements MazeRunnerFactory {
         Explorer explorer = new Explorer(maze);
         PathValidator validator = new PathValidator(explorer);
         boolean isValid = validator.isValidPath(path);
-        System.out.println(isValid ? "Path is VALID." : "Path is INVALID.");
+        //System.out.println(isValid ? "Path is VALID." : "Path is INVALID.");
     }
 }

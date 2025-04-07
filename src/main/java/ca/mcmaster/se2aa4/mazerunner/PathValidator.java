@@ -11,7 +11,7 @@ public class PathValidator {
         String expandedPath = expandFactorizedPath(path); // Expand 
         
         for (char command : expandedPath.toCharArray()) {
-            System.out.println(command);
+            //System.out.println(command);
             Command cmd;
             switch (command) {
                 case 'F':
@@ -38,7 +38,6 @@ public class PathValidator {
         else {
             return false;
         }
-        //return explorer.getPosition().equals(explorer.getPosition().getMaze().getExit()); -- doesn't work due to direction maybe refactor in future
     }
 
 

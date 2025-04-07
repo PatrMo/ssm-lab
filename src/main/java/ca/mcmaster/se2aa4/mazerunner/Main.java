@@ -32,9 +32,10 @@ public class Main {
 
             factory.run(maze);
         } catch (Exception e) {
-            logger.error("An error occurred while processing the maze.", e);
+            //logger.error("An error occurred while processing the maze.", e);
+            System.out.println("An error occurred while processing the maze: " + e.getMessage());
         }
 
-        logger.info("** End of Maze Runner **");
+        //logger.info("** End of Maze Runner **");
     }
 }
